@@ -30,38 +30,34 @@ public class OddEvenLinkedList {
      */
     class Solution {
         public ListNode oddEvenList(ListNode head) {
-            if (head == null || head.next == null ) return head;
+            if (head == null) return null;
+            else if (head.next == null || head.next.next == null) return head;
 
-            ListNode evenHead = head.next;
-            ListNode curEven = head.next;
-            ListNode oddHead = head;
-            ListNode curOdd = head;
+            ListNode oddHead = head.next;
+            ListNode oddCur = oddHead;
+            ListNode fast = oddCur.next;
+            ListNode evenCur = fast;
+            int count = 1;
 
-            ListNode cur = head.next.next;
+            head.next = fast;
 
-            int index = 3;
+            while (fast.next != null){
+                count ++;
+                fast = fast.next;
 
-            while (cur != null) {
-
-                if (index % 2 == 0) {
-                    // if current node is even
-                    curEven.next = cur;
-                    curEven = curEven.next;
-
-                } else if (index % 2 == 1){
-                    // if current node is odd
-                    curOdd.next = cur;
-                    curOdd = curOdd.next;
+                if (count % 2 == 0){
+                    oddCur.next = fast;
+                    oddCur = oddCur.next;
+                }else if (count % 2 == 1){
+                    evenCur.next = fast;
+                    evenCur = evenCur.next;
                 }
-
-                cur = cur.next;
-                index++;
             }
 
-            curEven.next = null;
-            curOdd.next = evenHead;
+            oddCur.next = null;
+            evenCur.next = oddHead;
 
-            return oddHead;
+            return head;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
