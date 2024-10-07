@@ -23,19 +23,21 @@ public class MaximumTwinSumOfALinkedList{
  */
 class Solution {
     public int pairSum(ListNode head) {
-        List<Integer> list = new ArrayList<>();
+
+        int[] arr = new int[100000];
+        int size = 0;
+        int max = 0;
 
         while (head != null){
-            list.add(head.val);
+            arr[size++] = head.val;
             head = head.next;
         }
 
-        int max = 0;
-        int n = list.size();
-
-        for (int i = 0; i < n / 2; i++) {
-            int sum = (list.get(i) + list.get(n - 1 - i));
-            if (max < sum) max = sum;
+        int len = size / 2;
+        for (int i = 0; i < len ; i++) {
+            size--;
+            int temp = arr[i] + arr[size];
+            if (temp > max) max = temp;
         }
 
         return max;
