@@ -16,74 +16,46 @@ public class DetermineIfTwoStringsAreClose {
                 both strings should have same number of letters
                 and the  sum of each type of letters should be the same
              */
-// solution 1
-            /*
-            char[] char1 = word1.toCharArray();
-            char[] char2 = word2.toCharArray();
 
-            if (char1.length != char2.length) return false;
-
-            List<Integer> list1 = new ArrayList<>();
-            List<Integer> list2 = new ArrayList<>();
+            if (word1.length() != word2.length()) return false;
 
             Map<Character, Integer> map1 = new HashMap<>();
             Map<Character, Integer> map2 = new HashMap<>();
 
-            Set<Character> set1 = new HashSet<>();
-            Set<Character> set2 = new HashSet<>();
+            char[] c1 = word1.toCharArray();
+            char[] c2 = word2.toCharArray();
 
-            for (int i = 0; i < char1.length; i++) {
-                map1.put(char1[i], map1.getOrDefault(char1[i], 0) + 1);
-                map2.put(char2[i], map2.getOrDefault(char2[i], 0) + 1);
+            for (char c : c1){
+                map1.put(c, map1.getOrDefault(c, 0) + 1);
             }
 
-            for (Map.Entry<Character, Integer> entry : map1.entrySet()) {
-                set1.add(entry.getKey());
-                list1.add(entry.getValue());
+            for (char c: c2){
+                map2.put(c, map2.getOrDefault(c, 0) + 1);
             }
 
-            for (Map.Entry<Character, Integer> entry : map2.entrySet()) {
-                set2.add(entry.getKey());
-                list2.add(entry.getValue());
+            List<Integer> l1 = new ArrayList<>();
+            List<Integer> l2 = new ArrayList<>();
+            Set<Character> s1 = new HashSet<>();
+            Set<Character> s2 = new HashSet<>();
+
+            for (Map.Entry<Character, Integer> entry : map1.entrySet()){
+                l1.add(entry.getValue());
+                s1.add(entry.getKey());
+
+            }
+            for (Map.Entry<Character, Integer> entry : map2.entrySet()){
+                l2.add(entry.getValue());
+                s2.add(entry.getKey());
             }
 
-            Collections.sort(list1);
-            Collections.sort(list2);
+            Collections.sort(l1);
+            Collections.sort(l2);
 
-            if (list1.equals(list2) && set1.equals(set2))
+            if (l1.equals(l2) && s1.equals(s2)){
                 return true;
-            else
+            } else {
                 return false;
-
-             */
-// solution 2
-
-            int[] arr1 = new int[26];
-            int[] arr2 = new int[26];
-
-            for (char c : word1.toCharArray()) arr1[c - 'a'] ++;
-            for (char c : word2.toCharArray()) arr2[c - 'a'] ++;
-
-            for (int i = 0; i < 26; i++) {
-                if ((arr1[i] == 0 && arr2[i] !=0) || (arr1[i] != 0 && arr2[i] == 0)) return false;
-
-                int x = arr1[i];
-                int y = arr2[i];
-
-                for (int j = i + 1; j < 26; j++) {
-                    if (arr1[j] == y){
-                        arr1[i] = y;
-                        arr1[j] = x;
-                        break;
-                    }
-                }
             }
-
-            for (int i = 0; i < 26; i++) {
-                if (arr1[i] != arr2[i]) return false;
-            }
-            return true;
-
 
         }
     }
