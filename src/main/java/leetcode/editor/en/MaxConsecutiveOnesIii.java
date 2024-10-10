@@ -5,6 +5,7 @@ public class MaxConsecutiveOnesIii {
         Solution solution = new MaxConsecutiveOnesIii().new Solution();
     }
 
+    //    [1004]Max Consecutive Ones III
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         /*
@@ -14,30 +15,29 @@ public class MaxConsecutiveOnesIii {
             figure out whether it is the longest 1's
          */
         public int longestOnes(int[] nums, int k) {
-            int zero = 0;
+            int max = 0;
+            int zeros = 0;
 
-            int left = 0;
             int right = 0;
-
-            int max1s = 0;
-
+            int left = 0;
 
             for (; right < nums.length; right++) {
 
-                if(nums[right] == 0) zero ++;
-
-                while (zero > k){
-                    if(nums[left] == 0){
-                        zero --;
+                // when current number is zero, flip a zero to one, count the current number of zero
+                if (nums[right] == 0) zeros ++;
+//
+//                when the number of flipped zero more than k, move the left pointer to the last number one
+                while(zeros > k) {
+                    if (nums[left] == 0) {
+                        zeros --;
                     }
                     left ++;
                 }
 
-                max1s = Math.max(max1s, right - left + 1);
+                max = Math.max(right - left + 1, max);
             }
 
-            return max1s;
-
+            return max;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
