@@ -32,31 +32,31 @@ public class LeafSimilarTrees {
             List<Integer> leaf1 = new ArrayList<>();
             List<Integer> leaf2 = new ArrayList<>();
 
-            getLeaf(root1, leaf1);
-            getLeaf(root2, leaf2);
-
+            dfs(root1, leaf1);
+            dfs(root2, leaf2);
 
             return leaf1.equals(leaf2);
+        }
+
+        private void dfs(TreeNode node, List<Integer> list){
+
+
+            if (node == null) return;
+
+            if (node.left != null){
+                dfs(node.left, list);
+            }
+
+            if (node.right != null){
+                dfs(node.right, list);
+            }
+
+            if (node.left == null && node.right == null) {
+                list.add(node.val);
+            }
 
         }
 
-        public void getLeaf(TreeNode root, List<Integer> leafList) {
-            if(root == null){
-                return;
-            }
-
-            if (root.left != null) {
-                getLeaf(root.left, leafList);
-            }
-
-            if (root.right != null) {
-                getLeaf(root.right, leafList);
-            }
-
-            if (root.left == null && root.right == null) {
-                leafList.add(root.val);
-            }
-        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
