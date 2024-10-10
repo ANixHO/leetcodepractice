@@ -7,6 +7,7 @@ public class MaxNumberOfKSumPairs {
         Solution solution = new MaxNumberOfKSumPairs().new Solution();
     }
 
+    //    [1679] Max Number of K-Sum pairs
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxOperations(int[] nums, int k) {
@@ -20,23 +21,27 @@ public class MaxNumberOfKSumPairs {
 
             Arrays.sort(nums);
 
-            int left = countZero;
+            int left = 0;
             int right = nums.length - 1;
-            int count = 0;
+
+            int res = 0;
 
             while (left < right) {
-                if (nums[left] + nums[right] == k) {
-                    count++;
+
+                int cur = nums[left] + nums[right];
+
+                if (cur == k) {
+                    res++;
                     left++;
                     right--;
-                } else if (nums[left] + nums[right] > k) {
+                } else if (cur > k) {
                     right--;
-                } else if (nums[left] + nums[right] < k) {
-                    left ++;
+                } else if (cur < k) {
+                    left++;
                 }
             }
 
-            return count;
+            return res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
