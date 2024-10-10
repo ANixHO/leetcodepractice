@@ -23,6 +23,7 @@ class Solution {
             }
 
             while(right > left && h >= height[right]){
+
                 right--;
             }
         }
