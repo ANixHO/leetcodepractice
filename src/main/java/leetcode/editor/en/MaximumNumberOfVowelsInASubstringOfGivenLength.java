@@ -10,31 +10,45 @@ public class MaximumNumberOfVowelsInASubstringOfGivenLength {
         solution.maxVowels("leetcode",3);
     }
 
+    // [1456] Maximum Number of Vowels in A Substring of Given Length
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxVowels(String s, int k)  {
-            byte[] arr = new byte[123];
-            byte[] str = s.getBytes();
-            arr['a'] = arr['e'] = arr['i'] = arr['o'] = arr['u'] = 1;
-
+            int max = 0;
+            int cur = 0;
             int left = 0;
-            int right = 0;
-            int maxV = 0;
-            int curV = 0;
+            int right = k;
 
-            while(right < k){
-                maxV += arr[str[right++]];
+            char[] chars = s.toCharArray();
+
+            for (int i = 0; i < k; i++) {
+                if (isVowel(chars[i])){
+                    cur++;
+                }
             }
 
-            curV = maxV;
+            max = cur;
 
-            while(right < s.length()){
-                curV += arr[str[right++]] - arr[str[left++]];
-                if(curV > maxV) maxV = curV;
+            while (right < chars.length) {
+                if (isVowel(chars[right])) {
+                    cur++;
+                }
+                if (isVowel(chars[left])) {
+                    cur--;
+                }
+
+                if (max < cur) max = cur;
+
+                left ++;
+                right++;
             }
 
-            return maxV;
 
+            return max;
+        }
+
+        private boolean isVowel(char c){
+            return c == 'a' || c == 'e' ||c == 'i' ||c == 'o' ||c == 'u';
         }
 
     }
