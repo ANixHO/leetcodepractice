@@ -1,9 +1,7 @@
 package leetcode.editor.en;
 
 public class ImplementTriePrefixTree {
-    public static void main(String[] args) {
-        Solution solution = new ImplementTriePrefixTree().new Solution();
-    }
+   
 
     // [208]Implement Trie (Prefix Tree)
 //leetcode submit region begin(Prohibit modification and deletion)
