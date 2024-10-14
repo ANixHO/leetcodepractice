@@ -4,7 +4,6 @@ import java.util.*;
 
 public class InsertDeleteGetrandomO1 {
     public static void main(String[] args) {
-        Solution solution = new InsertDeleteGetrandomO1().new Solution();
     }
 
     // [380]Insert Delete GetRandom O(1)
