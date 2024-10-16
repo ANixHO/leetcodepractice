@@ -35,4 +35,3 @@ public class LongestSubarrayOf1sAfterDeletingOneElement {
     // my solution 1
     }
 
-}
