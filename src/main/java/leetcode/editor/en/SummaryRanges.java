@@ -7,7 +7,7 @@ public class SummaryRanges{
     public static void main(String[] args) {
         Solution solution = new SummaryRanges().new Solution();
     }
-// [228]Summary Ranges
+//  [228]Summary Ranges
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<String> summaryRanges(int[] nums) {
