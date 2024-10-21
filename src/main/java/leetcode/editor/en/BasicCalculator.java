@@ -5,17 +5,18 @@ import java.util.Stack;
 public class BasicCalculator {
     public static void main(String[] args) {
         Solution solution = new BasicCalculator().new Solution();
+        solution.calculate("(1+(4+5+2)-3)+(6+8)");
     }
 
     // [224]Basic Calculator
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        private int i = 0;
         public int calculate(String s) {
-            int i = 0;
-            return cal(s, i);
+            return cal(s);
         }
 
-        private int cal(String s, int i){
+        private int cal(String s){
             int num = 0;
             int ans = 0;
             int sign = 1;
@@ -23,13 +24,16 @@ public class BasicCalculator {
             while(i < s.length()){
                 char c = s.charAt(i++);
 
-                if (c >= 48 && c <=57){
-                    num += num * 10 + c - '0';
+                if (c >= '0' && c <='9'){
+                    num = num * 10 + c - '0';
+
                 } else if (c == '('){
-                    ans += cal(s, i);
+                    num = cal(s);
+
                 } else if (c == ')') {
                     ans += num * sign;
                     return ans;
+
                 } else if (c == '+' || c == '-'){
                     ans += num * sign;
                     num = 0;
