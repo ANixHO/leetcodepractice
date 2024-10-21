@@ -2,9 +2,6 @@ package leetcode.editor.en;
 
 import leetcode.editor.en.utils.ListNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LinkedListCycle{
     public static void main(String[] args) {
         Solution solution = new LinkedListCycle().new Solution();
@@ -24,18 +21,13 @@ public class LinkedListCycle{
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        if (head == null) return false;
+        ListNode fast = head;
+        ListNode slow = head;
 
-        List<ListNode> list = new ArrayList<>();
-        ListNode cur = head;
-
-        while(cur.next != null){
-            if (list.contains(cur)){
-                return true;
-            }
-            list.add(cur);
-            cur = cur.next;
-
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) return true;
         }
 
         return false;
