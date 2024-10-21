@@ -9,13 +9,13 @@ public class MinStack {
 
     // [155]Min Stack
     //leetcode submit region begin(Prohibit modification and deletion)
-    class MinStack {
+    class Solution {
 
         private List<Integer> list;
         private List<Integer> minList;
         private int size;
 
-        public MinStack() {
+        public Solution() {
             list = new ArrayList<>();
             minList = new ArrayList<>();
             size = 0;
