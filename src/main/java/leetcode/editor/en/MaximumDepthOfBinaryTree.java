@@ -26,21 +26,20 @@ public class MaximumDepthOfBinaryTree {
      */
     class Solution {
         public int maxDepth(TreeNode root) {
-
             if (root == null) return 0;
 
             int left = 0;
             int right = 0;
 
-            if (root != null){
-                left = maxDepth(root.left);
-            }
-
-            if (root!= null){
+            if (root.right != null){
                 right = maxDepth(root.right);
             }
 
-            return Math.max(left, right) + 1;
+            if (root.left != null){
+                left = maxDepth(root.left);
+            }
+
+            return Math.max(right, left) + 1;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
