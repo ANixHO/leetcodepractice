@@ -24,6 +24,10 @@ public class TreeNode {
         this.right = right;
     }
 
+    public TreeNode(Integer[] array) {
+        arrayToTreeNode(array);
+    }
+
     public TreeNode arrayToTreeNode(Integer[] array) {
         if (array.length == 0) {
             return null;
@@ -35,16 +39,12 @@ public class TreeNode {
         for (int i = 1; i < array.length; i++) {
             TreeNode node = queue.peek();
             if (isLeft) {
-                if (array[i] != null) {
-                    node.left = new TreeNode(array[i]);
-                    queue.offer(node.left);
-                }
+                node.left = new TreeNode(array[i]);
+                queue.offer(node.left);
                 isLeft = false;
             } else {
-                if (array[i] != null) {
-                    node.right = new TreeNode(array[i]);
-                    queue.offer(node.right);
-                }
+                node.right = new TreeNode(array[i]);
+                queue.offer(node.right);
                 queue.poll();
                 isLeft = true;
             }
