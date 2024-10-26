@@ -9,6 +9,9 @@ import java.util.Queue;
 public class MinimumAbsoluteDifferenceInBst{
     public static void main(String[] args) {
         Solution solution = new MinimumAbsoluteDifferenceInBst().new Solution();
+
+        TreeNode root = new TreeNode().arrayToTreeNode(new Integer[]{236,104,701,null,227,null,911});
+        solution.getMinimumDifference(root);
     }
 // [530]Minimum Absolute Difference in BST
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -28,29 +31,21 @@ public class MinimumAbsoluteDifferenceInBst{
  * }
  */
 class Solution {
+
+    int res = Integer.MAX_VALUE;
+    TreeNode prev = null;
     public int getMinimumDifference(TreeNode root) {
-        int res = Integer.MAX_VALUE;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-
-        while(!queue.isEmpty()){
-            int size = queue.size();
-
-            while(size-- > 0){
-                TreeNode node = queue.poll();
-                if (node.left!= null) {
-                    res = Math.min(res, Math.abs(node.val - node.left.val));
-                    queue.add(node.left);
-                }
-                if (node.right != null){
-                    res = Math.min(res, Math.abs(node.val - node.right.val));
-                    queue.add(node.right);
-                }
-            }
-        }
-
+        if (root == null || (root.left == null && root.right == null)) return 0;
+        inOrder(root);
         return res;
+    }
 
+    private void inOrder(TreeNode node){
+        if (node == null) return;
+        if (node.left != null) inOrder(node.left);
+        if (prev != null) res = Math.min(res, Math.abs(node.val - prev.val));
+        prev = node;
+        if (node.right !=null) inOrder(node.right);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -33,18 +33,22 @@ public class TreeNode {
             return null;
         }
         TreeNode root = new TreeNode(array[0]);
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         boolean isLeft = true;
         for (int i = 1; i < array.length; i++) {
             TreeNode node = queue.peek();
             if (isLeft) {
-                node.left = new TreeNode(array[i]);
-                queue.offer(node.left);
+                if (array[i] != null) {
+                    node.left = new TreeNode(array[i]);
+                    queue.offer(node.left);
+                }
                 isLeft = false;
             } else {
-                node.right = new TreeNode(array[i]);
-                queue.offer(node.right);
+                if (array[i] != null) {
+                    node.right = new TreeNode(array[i]);
+                    queue.offer(node.right);
+                }
                 queue.poll();
                 isLeft = true;
             }
