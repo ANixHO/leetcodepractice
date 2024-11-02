@@ -31,15 +31,16 @@ public class MaximumDepthOfBinaryTree {
             int left = 0;
             int right = 0;
 
-            if (root.right != null){
-                right = maxDepth(root.right);
-            }
-
             if (root.left != null){
                 left = maxDepth(root.left);
             }
 
-            return Math.max(right, left) + 1;
+            if (root.right != null){
+                right = maxDepth(root.right);
+            }
+
+            return Math.max(left, right) + 1;
+
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
