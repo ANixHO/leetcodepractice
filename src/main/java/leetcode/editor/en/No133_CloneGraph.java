@@ -7,7 +7,6 @@
 
   public class No133_CloneGraph{
       public static void main(String[] args) {
-           Solution solution = new CloneGraph().new Solution();
       }
       // [133]Clone Graph
       //leetcode submit region begin(Prohibit modification and deletion)
