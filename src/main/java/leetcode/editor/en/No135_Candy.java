@@ -24,12 +24,13 @@ class Solution {
             } else if (curr == prev){
                 down = 0;
                 up = 0;
+                peak = 0;
                 res ++;
             } else {
                 up = 0;
                 down++;
                 res += down + 1;
-                if (down < peak){
+                if (down <= peak){
                     res--;
                 }
             }
