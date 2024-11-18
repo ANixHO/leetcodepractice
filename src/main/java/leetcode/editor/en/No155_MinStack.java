@@ -5,7 +5,6 @@ import java.util.List;
 
 public class No155_MinStack {
     public static void main(String[] args) {
-        Solution solution = new No155_MinStack().new Solution();
     }
 
     /*
