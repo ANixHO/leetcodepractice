@@ -5,12 +5,13 @@ public class Node {
     public int key;
     public Node next;
     public Node prev;
+    public Node left;
+    public Node right;
+
 
     public Node(int val) {
         this.val = val;
-        this.key = key;
-        this.next = null;
-        this.prev = null;
+
     }
 }
 
