@@ -2,14 +2,15 @@
 
   import leetcode.editor.en.utils.TreeNode;
 
-  import java.util.ArrayList;
-  import java.util.List;
-
-  public class No173_BinarySearchTreeIterator{
+  public class No530_MinimumAbsoluteDifferenceInBst{
       public static void main(String[] args) {
+           Solution solution = new No530_MinimumAbsoluteDifferenceInBst().new Solution();
+           TreeNode root = new TreeNode(1);
+           root.right = new TreeNode(2);
+           solution.getMinimumDifference(root);
       }
 /* 
-[173]Binary Search Tree Iterator
+[530]Minimum Absolute Difference in BST
 */
       //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -27,41 +28,24 @@
  *     }
  * }
  */
-class BSTIterator {
-    private TreeNode newRoot = new TreeNode(0);
-    private TreeNode head = newRoot;
-    public BSTIterator(TreeNode root) {
+class Solution {
+    int res = Integer.MAX_VALUE;
+    int prev = Integer.MAX_VALUE;
+    public int getMinimumDifference(TreeNode root) {
         dfs(root);
-    }
-    
-    public int next() {
-        head = head.right;
-        return head.val;
-    }
-    
-    public boolean hasNext() {
-        return head.right != null;
+        return res;
     }
 
     private void dfs(TreeNode node){
         if (node == null) return;
 
         if (node.left != null) dfs(node.left);
-
-        newRoot.right = node;
-        newRoot = newRoot.right;
-
+        res = Math.min(res, Math.abs(node.val - prev));
+        prev = node.val;
         if (node.right != null) dfs(node.right);
 
     }
 }
-
-/**
- * Your BSTIterator object will be instantiated and called as such:
- * BSTIterator obj = new BSTIterator(root);
- * int param_1 = obj.next();
- * boolean param_2 = obj.hasNext();
- */
 //leetcode submit region end(Prohibit modification and deletion)
 
   }

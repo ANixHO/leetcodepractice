@@ -7,7 +7,7 @@ public class Node {
     public Node prev;
     public Node left;
     public Node right;
-
+    public Node random;
 
     public Node(int val) {
         this.val = val;
