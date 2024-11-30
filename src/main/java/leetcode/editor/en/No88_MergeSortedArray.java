@@ -9,41 +9,21 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] temp = new int[m];
+        for (int i = 0; i < m; i++) temp[i] = nums1[i];
+
         int i1 = 0;
         int i2 = 0;
-
         int index = 0;
+
         while(i1 < m && i2 < n){
-            if (index< m){
-                temp[index] = nums1[index];
-            }
-
-            if (temp[i1] <= nums2[i2]){
-                nums1[index] = temp[i1++];
-
-            } else {
-                nums1[index] = nums2[i2++];
-            }
+            if (temp[i1] <= nums2[i2]) nums1[index] = temp[i1++];
+            else nums1[index] = nums2[i2++];
 
             index ++;
         }
 
-        if (index < m){
-            int j = index;
-            for (;j < m; j++){
-                temp[j] = nums1[j];
-            }
-        }
-
-        while(i1 < m){
-            nums1[index ++] = temp[i1++];
-        }
-
-        while(i2 < n){
-            nums1[index++] = nums2[i2++];
-        }
-
-
+        while(i1 < m) nums1[index++] = temp[i1++];
+        while(i2 < n) nums1[index++] = nums2[i2++];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
