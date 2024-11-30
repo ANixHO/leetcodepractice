@@ -1,7 +1,6 @@
   package leetcode.editor.en;
   public class No211_DesignAddAndSearchWordsDataStructure{
       public static void main(String[] args) {
-           Solution solution = new No211_DesignAddAndSearchWordsDataStructure().new Solution();
       }
 /* 
 [211]Design Add and Search Words Data Structure
@@ -60,12 +59,6 @@ class TrieNode{
     }
 }
 
-/**
- * Your WordDictionary object will be instantiated and called as such:
- * WordDictionary obj = new WordDictionary();
- * obj.addWord(word);
- * boolean param_2 = obj.search(word);
- */
 //leetcode submit region end(Prohibit modification and deletion)
 
   }
