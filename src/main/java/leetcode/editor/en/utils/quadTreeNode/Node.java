@@ -35,3 +35,4 @@ public class Node {
         this.bottomLeft = bottomLeft;
         this.bottomRight = bottomRight;
     }
+}

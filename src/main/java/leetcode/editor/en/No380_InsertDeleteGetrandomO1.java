@@ -4,7 +4,6 @@ import java.util.*;
 
 public class No380_InsertDeleteGetrandomO1 {
     public static void main(String[] args) {
-        Solution solution = new No380_InsertDeleteGetrandomO1().new Solution();
     }
 
     /*
