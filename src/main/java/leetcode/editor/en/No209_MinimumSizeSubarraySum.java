@@ -9,19 +9,21 @@
       //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
-        int left = 0;
-        int right = 0;
-        int sum = 0;
-        int res = nums.length + 1;
+       int res = nums.length + 1;
+       int curr = 0;
+       int left = 0;
+       int right = 0;
 
-        while (right < nums.length){
-            sum += nums[right];
-            while(sum >= target){
+        while (right < nums.length) {
+            curr += nums[right];
+
+            while(curr >= target){
                 res = Math.min(res, right - left + 1);
-                sum -= nums[left++];
+                curr -= nums[left++];
             }
             right ++;
         }
+
         return res == nums.length + 1 ? 0 : res;
 
     }
