@@ -13,6 +13,13 @@
       //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        /*
+
+         solution:
+         1. use map to store the retrieved int and its index
+         2. find the int in map equals to 'target - current int'
+
+         */
         // key: int in nums
         // value : the index of int
         Map<Integer, Integer> map = new HashMap<>();
